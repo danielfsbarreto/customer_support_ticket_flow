@@ -1,0 +1,34 @@
+perform_sql_query:
+  description: >
+    Analyze the user's natural language question about customer support data and translate it into
+    an accurate SQL query. First, understand what information the user is seeking from the customer
+    support tickets database. Then, construct an appropriate SQL SELECT query that will retrieve
+    the requested data.
+
+    The user's prompt is: '{user_prompt}'.
+
+    The database contains a table called 'customer_support_tickets' with the following structure:
+    {database_structure}
+
+    The database path file is located at '{database_path}'.
+
+    Consider the user's intent carefully - they might be asking about:
+    - Ticket counts and statistics (e.g., "How many tickets are open?")
+    - Customer demographics (e.g., "What's the age distribution of customers?")
+    - Product-related issues (e.g., "Which products have the most complaints?")
+    - Performance metrics (e.g., "What's the average resolution time?")
+    - Trends over time (e.g., "How have ticket volumes changed?")
+
+    Execute the SQL query using the SQLite Database Query Tool and provide a clear interpretation
+    of the results in business context. Use it multiple times if needed to answer the user's question.
+  expected_output: >
+    A comprehensive analysis containing:
+    1. A clear restatement of what the user is asking for
+    2. The SQL queries that were constructed to answer the question
+    3. The raw query results from the database for each query
+    4. A business-friendly interpretation of the results with key insights
+    5. Any relevant observations or recommendations based on the data
+
+    The output should be formatted in markdown with clear sections and be easily understandable
+    by both technical and non-technical stakeholders.
+  agent: database_specialist
